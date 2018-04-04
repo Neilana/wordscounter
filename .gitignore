@@ -36,8 +36,4 @@ Makefile*
 # QtCtreator CMake
 CMakeLists.txt.user*
 
-docs/
-libs/
 fb2/
-testFiles/
-xml_project/
