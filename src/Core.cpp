@@ -60,6 +60,9 @@ void Core::setUpGuiWorkerConnections()
     QObject::connect(&m_libraryManager, SIGNAL(changeProgramStatus(QString)),
                      &m_qmlCppInterface, SLOT(changeProgramStatus(QString)));
 
+    QObject::connect(&m_wordsManager, SIGNAL(changeProgramStatus(QString)),
+                     &m_qmlCppInterface, SLOT(changeProgramStatus(QString)));
+
     QObject::connect(&m_readingManager, SIGNAL(changeProgramStatus(QString)),
                      &m_qmlCppInterface, SLOT(changeProgramStatus(QString)));
 
@@ -232,9 +235,13 @@ void Core::openBook(int id)
     clearBookModel();
 
     // open book
-    m_libraryManager.setOpenedBookId(id);
     QString fileName = m_libraryManager.getBookFileNameById(id);
-    if (fileName.isEmpty()) return;
+    if (fileName.isEmpty() || !QFileInfo::exists(fileName))
+    {
+        m_qmlCppInterface.changeProgramStatus("Book doesn't exist!");
+        return;
+    }
+    m_libraryManager.setOpenedBookId(id);
 
     m_calculating = true;
     m_qmlCppInterface.setBookOpened(true);

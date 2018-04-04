@@ -3,16 +3,20 @@
 #include <memory>
 #include <set>
 
+#include <QObject>
 #include <QString>
 
 #include "MySqlQueryModel.h"
+#include "WordItem.h"
 #include "WordsDatabase.h"
 
-#include "WordItem.h"
-
-class WordsManager
+class WordsManager : public QObject
 {
+    Q_OBJECT
+
 public:
+    WordsManager(QObject* parent = 0) {}
+
     // models operations
     void setUpModels();
     std::shared_ptr<MySqlQueryModel> getKnownWordsModel();
@@ -24,9 +28,12 @@ public:
 
     // word operations
     void loadWords();
-    void saveWords() const;
+    void saveWords();
     void addNewWordInfo(const WordItem& wordInfo);
     bool isWordKnownOrIgnored(const QString& word);
+
+signals:
+    void changeProgramStatus(QString);
 
 private:
     std::shared_ptr<MySqlQueryModel> m_knownModel;

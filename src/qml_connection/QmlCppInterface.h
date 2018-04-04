@@ -2,6 +2,7 @@
 
 #include <QMap>
 #include <QObject>
+#include <QTimer>
 #include <QUrl>
 #include <QVector>
 
@@ -72,6 +73,7 @@ public slots:
     void updateNotes(QMap<QString, QString> notes);
     void changeProgramStatus(QString);
     void updateSearchedWord(QString);
+    void clearProgramStatus();
 
 signals:
     // to qml
@@ -108,4 +110,6 @@ private:
     QString m_programStatus;
     QMap<QString, QString> m_notes;
     QString m_openedNote;
+
+    QTimer* m_timer;
 };

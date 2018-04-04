@@ -10,9 +10,15 @@ QmlCppInterface::QmlCppInterface(QObject* parent)
 {
     srand(time(NULL));
     fillHelloAnimalsVector();
+
+    m_timer = new QTimer;
+    QObject::connect(m_timer, SIGNAL(timeout()), this, SLOT(clearProgramStatus()));
 }
 
-QmlCppInterface::~QmlCppInterface() {}
+QmlCppInterface::~QmlCppInterface()
+{
+    if (m_timer != NULL) delete m_timer;
+}
 
 void QmlCppInterface::setCore(Core* core) { m_core = core; }
 
@@ -198,6 +204,10 @@ void QmlCppInterface::changeProgramStatus(QString status)
 {
     m_programStatus = status;
     emit programStatusChanged();
+    if (status != "")
+        m_timer->start(2300);
+    else
+        m_timer->stop();
 }
 
 void QmlCppInterface::updateSearchedWord(QString word)
@@ -205,6 +215,8 @@ void QmlCppInterface::updateSearchedWord(QString word)
     m_searchedWord = word;
     emit searchedWordChanged();
 }
+
+void QmlCppInterface::clearProgramStatus() { changeProgramStatus(""); }
 
 void QmlCppInterface::fillHelloAnimalsVector()
 {

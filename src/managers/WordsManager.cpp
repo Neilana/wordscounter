@@ -50,9 +50,11 @@ void WordsManager::loadWords()
     }
 }
 
-void WordsManager::saveWords() const
+void WordsManager::saveWords()
 {
     QSqlDatabase db = WordsDatabase::getInstance();
+
+    QString result = "Word was successfully added!";
 
     for (auto it : m_newWordsMap)
     {
@@ -68,6 +70,7 @@ void WordsManager::saveWords() const
             WCNT_LOG("[DB] Error (WordsManager): {} \n Last query: ",
                      query.lastError().text().toStdString(),
                      query.lastQuery().toStdString());
+            result = "Error while adding a word";
         }
     }
 
@@ -83,8 +86,10 @@ void WordsManager::saveWords() const
             WCNT_LOG("[DB] Error (WordsManager): {} \n Last query: ",
                      query.lastError().text().toStdString(),
                      query.lastQuery().toStdString());
+            result = "Error while adding a word";
         }
     }
+    emit changeProgramStatus(result);
 }
 
 void WordsManager::addNewWordInfo(const WordItem &wordInfo)
