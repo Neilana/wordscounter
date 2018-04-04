@@ -1,0 +1,45 @@
+<RCC>
+    <qresource prefix="/">
+        <file>Main.qml</file>
+        <file>style/qmldir</file>
+        <file>style/Style.qml</file>
+        <file>windows_and_forms/ExitDialog.qml</file>
+        <file>menu_pages/Dictionary.qml</file>
+        <file>menu_pages/DictionaryIgnored.qml</file>
+        <file>menu_pages/DictionaryKnown.qml</file>
+        <file>menu_pages/Library.qml</file>
+        <file>menu_pages/LibraryAdd.qml</file>
+        <file>menu_pages/LibraryAllBooks.qml</file>
+        <file>menu_pages/LibraryFavourite.qml</file>
+        <file>menu_pages/LibrarySearch.qml</file>
+        <file>menu_pages/MainMenu.qml</file>
+        <file>menu_pages/Users.qml</file>
+        <file>menu_pages/UsersChose.qml</file>
+        <file>menu_pages/UsersNew.qml</file>
+        <file>menu_pages/UsersSettings.qml</file>
+        <file>custom_items/BigImageTextButton.qml</file>
+        <file>custom_items/Book.qml</file>
+        <file>custom_items/BorderRectangle.qml</file>
+        <file>custom_items/ImageButton.qml</file>
+        <file>custom_items/ImageTextButton.qml</file>
+        <file>custom_items/LabelInput.qml</file>
+        <file>custom_items/LongVerticalButton.qml</file>
+        <file>custom_items/TextButton.qml</file>
+        <file>reading_window/BookPageMouseArea.qml</file>
+        <file>reading_window/PageView.qml</file>
+        <file>reading_window/ReadingWindow.qml</file>
+        <file>reading_window/notes/NotesWindow.qml</file>
+        <file>reading_window/contents/ContentsItem.qml</file>
+        <file>custom_items/LabelButton.qml</file>
+        <file>reading_window/new_word/AddSearchMenu.qml</file>
+        <file>reading_window/new_word/SearchWordItem.qml</file>
+        <file>custom_items/LabelInput_v2.qml</file>
+        <file>reading_window/contents/ContentsBookmarksMenu.qml</file>
+        <file>reading_window/contents/BookmarksItem.qml</file>
+        <file>custom_items/HelloAnimalItem.qml</file>
+        <file>custom_items/EmptyItem.qml</file>
+        <file>custom_items/top_bar/TopBar.qml</file>
+        <file>custom_items/top_bar/SmallTopButton.qml</file>
+        <file>reading_window/new_word/NewWord.qml</file>
+    </qresource>
+</RCC>

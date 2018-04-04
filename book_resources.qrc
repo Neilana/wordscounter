@@ -1,0 +1,12 @@
+<RCC>
+    <qresource prefix="/">
+        <file>myStylesheet_sections.xsl</file>
+        <file>fb2/FictionBook.xsd</file>
+        <file>fb2/FictionBook2.0.xsd</file>
+        <file>fb2/FictionBookGenres.xsd</file>
+        <file>fb2/FictionBookLang.xsd</file>
+        <file>fb2/FictionBookLinks.xsd</file>
+        <file>fb2/FictionNotes.xsd</file>
+        <file>fb2/LICENSE.md</file>
+    </qresource>
+</RCC>
