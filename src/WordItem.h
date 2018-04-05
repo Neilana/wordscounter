@@ -25,7 +25,9 @@ public:
 
     const QString getWord() const;
     const QString getDefinition() const;
+    const QString getExample() const;
 };
 
 inline const QString WordItem::getWord() const { return m_id; }
 inline const QString WordItem::getDefinition() const { return m_definition; }
+inline const QString WordItem::getExample() const { return m_example; }

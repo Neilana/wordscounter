@@ -6,13 +6,12 @@ import QtQuick.Window 2.2
 
 import "../../style"
 import "../../custom_items"
+import "../../custom_items/top_bar"
 import "../../windows_and_forms"
 
 Window {
     id: notesWindow
 
-    // property alias barArea: notesWindowBar.barMouseArea
-    // property alias wordForm: wordForm
     signal closeMe
 
     property var globalPosition
@@ -33,28 +32,29 @@ Window {
     color: Style.backgroundColor
 
     Rectangle {
-        anchors.left: parent.left
-        anchors.leftMargin: 2
-
-        anchors.right: parent.right
-        anchors.rightMargin: 2
-
         anchors.top: notesWindowBar.bottom
-        anchors.topMargin: 0
-
         anchors.bottom: parent.bottom
+        anchors.left: parent.left
+        anchors.right: parent.right
+
+        anchors.leftMargin: 2
+        anchors.rightMargin: 2
+        anchors.topMargin: 0
         anchors.bottomMargin: 2
 
         color: Style.backgroundColor
 
         TextArea {
             anchors.fill: parent
+
             wrapMode: Text.Wrap
             readOnly: true
             textFormat: TextEdit.RichText
-            //text: QmlCppInterface.getTableOfnotes()
-            //text: "note teeext hereee"
             text: openedNote
+
+            color: Style.textColor
+            font.pixelSize: Style.contentsFontPixelSize
+            font.family: Style.tableFont.name
         }
     }
 
@@ -65,7 +65,6 @@ Window {
         // для cursor position
         container: notesWindow
 
-        //closeArea.onClicked: notesWindow.closeMe()
         closeArea.onClicked: notesWindow.close()
 
         mainMenuBarButton.visible: false

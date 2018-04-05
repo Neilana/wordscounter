@@ -17,7 +17,7 @@ PagesGenerator::PagesGenerator(QObject *parent)
     m_doc = std::make_shared<QTextDocument>();
 }
 
-PagesGenerator::~PagesGenerator() {}
+PagesGenerator::~PagesGenerator() { WCNT_LOG("[DESTRUCTION Core"); }
 
 /**
  * @brief PagesGenerator::setPageSize
@@ -196,6 +196,8 @@ int PagesGenerator::calculateNearbyPages(int pos)
 
 QStringList PagesGenerator::loadBackPages()
 {
+    if (!m_doc) return {};
+
     QStringList addedPages;
     int page = m_calculatedPages.size() - 1;
     WCNT_LOG("Load back pages for {}...", page);
@@ -462,6 +464,8 @@ QStringList PagesGenerator::calculateSeveralPagesForward(int startGlobalPos,
 QString PagesGenerator::calculatePageFromBottom(QTextCursor &pageCursor,
                                                 bool &wasFirstLine)
 {
+    if (!m_doc) return {};
+
     QString pageHtml;
 
     QTextOption opt;
@@ -566,6 +570,8 @@ QStringList PagesGenerator::calculateSeveralPagesBackward(int startGlobalPos,
                                                           int pagesToCalculate,
                                                           bool keepOldPages)
 {
+    if (!m_doc) return {};
+
     QStringList addedPages;
 
     if (!keepOldPages)
@@ -694,6 +700,8 @@ int PagesGenerator::adjustHighlightedPageHeightFromBottom(int page)
  */
 QStringList PagesGenerator::loadNextPages()
 {
+    if (!m_doc) return {};
+
     QStringList addedPages;
     int page = m_calculatedPages.size() - 1;
     WCNT_LOG("[CALCULATING PAGES] Load next pages for {}...", page);

@@ -1,4 +1,5 @@
 import QtQuick 2.7
+import QtQuick.Window 2.2
 
 
 /* BookPageMouseArea - contains MouseArea for claculating current position on the page

@@ -17,7 +17,7 @@ Item {
         id: b1
         text: "Open file"
         area.onClicked: {
-            text1.text = QmlCppInterface.countAllUnknownWordsByBookId(0)
+            //text1.text = QmlCppInterface.countAllUnknownWordsByBookId(0)
             fileDialog.open()
         }
     }

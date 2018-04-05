@@ -18,7 +18,7 @@ Core::Core(QObject *parent)
 Core::~Core()
 {
     // FIXME: THREADS DESTROYED
-    // if (m_workingThread != NULL) m_workingThread->deleteLater();
+    if (m_workingThread != NULL) m_workingThread->deleteLater();
 }
 
 void Core::setUpModels()
@@ -153,7 +153,6 @@ void Core::setUpConnections()
     setUpThreadsConnections();
     setUpOtherConnections();
 
-    //
     //    QObject::connect(&m_readingManager, SIGNAL(finished()), &m_readingThread,
     //                     SLOT(quit()));
     //    QObject::connect(&m_readingManager, SIGNAL(finished()), &m_readingManager,
@@ -161,8 +160,13 @@ void Core::setUpConnections()
     //    QObject::connect(&m_readingThread, SIGNAL(finished()), &m_readingThread,
     //                     SLOT(deleteLater()));
 
-    QObject::connect(QThread::currentThread(), SIGNAL(finished()), m_workingThread,
-                     SLOT(deleteLater()));
+    // QObject::connect(QThread::currentThread(), SIGNAL(finished()), m_workingThread,
+    //                 SLOT(deleteLater()));
+
+    // connect(this, SIGNAL(destroyed()), m_workingThread, SLOT(quit()));
+    // connect(this, SIGNAL(destroyed()), m_workingThread, SLOT(deleteLater()));
+
+    //   connect(this, SIGNAL(finished()), m_workingThread, SLOT(deleteLater()));
     //    QObject::connect(QThread::currentThread(), SIGNAL(finished()),
     //                     QThread::currentThread(), SLOT(deleteLater()));
 }
@@ -222,7 +226,6 @@ void Core::setUp()
  */
 void Core::start() { m_engine.load(QUrl(QStringLiteral("qrc:/Main.qml"))); }
 
-/**** READING MANAGER ****/
 void Core::openBook(int id)
 {
     m_waitLoadingByPercents = true;
@@ -231,6 +234,8 @@ void Core::openBook(int id)
     int index = m_qmlCppInterface.m_currentPageIndex;
     emit closeOpenedBookAtPage(index);
 
+    m_searchWordModel.resetAll();
+    m_qmlCppInterface.updateSearchedWord("");
     clearContentModel();
     clearBookModel();
 

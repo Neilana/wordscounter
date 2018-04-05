@@ -17,18 +17,19 @@ Item {
 
     width: 400
     height: 400
-    objectName: "booksLibraryItem"
 
     RowLayout {
         id: tableMenuRow
-        spacing: 0
 
         anchors.right: parent.right
-        anchors.rightMargin: 0
         anchors.left: parent.left
-        anchors.leftMargin: 0
         anchors.bottom: parent.bottom
+
+        anchors.rightMargin: 0
+        anchors.leftMargin: 0
         anchors.bottomMargin: 0
+
+        spacing: 0
 
         ImageTextButton {
             id: imageTextButton1
@@ -98,14 +99,15 @@ Item {
             Book {
                 property var bookId
                 property var bookPath
+
+                width: booksGridView.cellWidth - 10
+
                 bookId: model.Id
                 bookPath: model.Path
                 coverImage.source: "data:image/png;base64," + model.Image
-                //width: 200
-                width: booksGridView.cellWidth - 10
                 authorText: Author
                 titleText: Title
-                // bookBorder.border.width: 10
+
                 bookBorder.border.color: {
                     if (mouseArea1.containsMouse)
                         return Style.highlightHoverMenuColor
@@ -131,9 +133,12 @@ Item {
 
         GridView {
             id: booksGridView
-            //@@@anchors.fill: parent
+
+            anchors.fill: parent
+
             model: librarySqlModel
             delegate: bookDelegate
+
             cellWidth: 220
             //cellWidth: booksItem.width * 0.3
             cellHeight: cellWidth * 1.5 + 50

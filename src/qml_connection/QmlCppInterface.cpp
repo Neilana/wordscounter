@@ -220,14 +220,14 @@ void QmlCppInterface::clearProgramStatus() { changeProgramStatus(""); }
 
 void QmlCppInterface::fillHelloAnimalsVector()
 {
+    m_helloAnimals.push_back(HelloAnimal{"narwhal.png", "narwhal"});
+    m_helloAnimals.push_back(HelloAnimal{"octopus_2.png", "ninja octopus"});
     m_helloAnimals.push_back(HelloAnimal{"unicorn.png", "unicorn"});
     m_helloAnimals.push_back(HelloAnimal{"bee.png", "bee"});
     m_helloAnimals.push_back(HelloAnimal{"crab.png", "crab"});
     m_helloAnimals.push_back(HelloAnimal{"dragon_1.png", "dragon"});
     m_helloAnimals.push_back(HelloAnimal{"dragon_2.png", "dragon"});
     m_helloAnimals.push_back(HelloAnimal{"fish.png", "fish"});
-    m_helloAnimals.push_back(HelloAnimal{"narwhal.png", "narwhal"});
-    m_helloAnimals.push_back(HelloAnimal{"octopus_2.png", "ninja octopus"});
     m_helloAnimals.push_back(HelloAnimal{"turtle.png", "turtle"});
 
     //    m_helloAnimals.push_back(HelloAnimal{"deer.png", "deer"});

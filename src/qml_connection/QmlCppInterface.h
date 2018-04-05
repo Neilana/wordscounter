@@ -2,6 +2,7 @@
 
 #include <QMap>
 #include <QObject>
+#include <QSet>
 #include <QTimer>
 #include <QUrl>
 #include <QVector>

@@ -22,9 +22,8 @@ ReadingManager::ReadingManager(QObject *parent)
 
 ReadingManager::~ReadingManager()
 {
-    if (m_pagesGenerator != NULL) delete m_pagesGenerator;
-
-    if (m_timer != NULL) delete m_timer;
+    if (m_pagesGenerator != NULL) m_pagesGenerator->deleteLater();
+    if (m_timer != NULL) m_timer->deleteLater();
 }
 
 void ReadingManager::setWordsHighlighting(bool value) { m_highlightUnknownWords = value; }

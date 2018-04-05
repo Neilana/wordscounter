@@ -60,10 +60,11 @@ void WordsManager::saveWords()
     {
         QSqlQuery query(db);
         query.prepare(
-            "INSERT INTO KnownWords (Word, Definition) "
-            "VALUES (:word, :definition)");
+            "INSERT INTO KnownWords (Word, Definition, Example) "
+            "VALUES (:word, :definition, :example)");
         query.bindValue(":word", it.first);
         query.bindValue(":definition", it.second.getDefinition());
+        query.bindValue(":example", it.second.getExample());
 
         if (!query.exec())
         {
@@ -98,6 +99,7 @@ void WordsManager::addNewWordInfo(const WordItem &wordInfo)
     m_newWordsMap[word] = wordInfo;
 
     saveWords();
+    m_newWordsMap.clear();
     // update
     QSqlDatabase db = WordsDatabase::getInstance();
     m_knownModel->setQuery("SELECT  * FROM KnownWords", db);
